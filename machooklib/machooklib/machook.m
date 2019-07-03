@@ -1,7 +1,12 @@
-#line 1 "hook.xm"
-#import <Foundation/Foundation.h>
-@interface ViewController: NSObject
-- (void)showPayedInfo;
+#line 1 "./machooklib/machook.xm"
+
+#import <Cocoa/Cocoa.h>
+#import "xctheos.h"
+
+@interface ViewController:NSObject
+@property (weak)  NSTextField *statusLbl;
+@property (nonatomic, assign) BOOL isPayed;
+- (void)viewDidLoad;
 @end
 
 
@@ -29,14 +34,15 @@
 @class ViewController; 
 static void (*_logos_orig$_ungrouped$ViewController$viewDidLoad)(_LOGOS_SELF_TYPE_NORMAL ViewController* _LOGOS_SELF_CONST, SEL); static void _logos_method$_ungrouped$ViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL ViewController* _LOGOS_SELF_CONST, SEL); 
 
-#line 7 "hook.xm"
+#line 12 "./machooklib/machook.xm"
 
 
 static void _logos_method$_ungrouped$ViewController$viewDidLoad(_LOGOS_SELF_TYPE_NORMAL ViewController* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
-	[self showPayedInfo];
+    self.isPayed = true;
+    _logos_orig$_ungrouped$ViewController$viewDidLoad(self, _cmd);
 }
 
 
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$ViewController = objc_getClass("ViewController"); MSHookMessageEx(_logos_class$_ungrouped$ViewController, @selector(viewDidLoad), (IMP)&_logos_method$_ungrouped$ViewController$viewDidLoad, (IMP*)&_logos_orig$_ungrouped$ViewController$viewDidLoad);} }
-#line 14 "hook.xm"
+#line 20 "./machooklib/machook.xm"

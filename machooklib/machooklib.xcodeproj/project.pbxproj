@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		350E4C1722C311050039F2B8 /* machooklib.m in Sources */ = {isa = PBXBuildFile; fileRef = 350E4C1622C311050039F2B8 /* machooklib.m */; };
 		350E4C2022C3112C0039F2B8 /* libsubstitute.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 350E4C1E22C3112C0039F2B8 /* libsubstitute.dylib */; };
 		350E4C2122C3112C0039F2B8 /* substrate.h in Headers */ = {isa = PBXBuildFile; fileRef = 350E4C1F22C3112C0039F2B8 /* substrate.h */; };
+		35FFEBDB22C9FEA400CA3208 /* machook.xmi in Sources */ = {isa = PBXBuildFile; fileRef = 35FFEBDA22C9FE9C00CA3208 /* machook.xmi */; };
+		35FFEBDD22CA015A00CA3208 /* xctheos.h in Headers */ = {isa = PBXBuildFile; fileRef = 35FFEBDC22CA015A00CA3208 /* xctheos.h */; };
+		35FFEBE122CCC3D300CA3208 /* machook.m in Sources */ = {isa = PBXBuildFile; fileRef = 35FFEBE022CCC3D300CA3208 /* machook.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		350E4C1122C311050039F2B8 /* libmachooklib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libmachooklib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		350E4C1622C311050039F2B8 /* machooklib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = machooklib.m; sourceTree = "<group>"; };
 		350E4C1E22C3112C0039F2B8 /* libsubstitute.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsubstitute.dylib; sourceTree = "<group>"; };
 		350E4C1F22C3112C0039F2B8 /* substrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = substrate.h; sourceTree = "<group>"; };
+		35FFEBD022C9FD3300CA3208 /* libhook_lib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libhook_lib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		35FFEBDA22C9FE9C00CA3208 /* machook.xmi */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = machook.xmi; sourceTree = "<group>"; };
+		35FFEBDC22CA015A00CA3208 /* xctheos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xctheos.h; sourceTree = "<group>"; };
+		35FFEBE022CCC3D300CA3208 /* machook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = machook.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +33,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35FFEBCE22C9FD3300CA3208 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -35,6 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				350E4C1322C311050039F2B8 /* machooklib */,
+				35FFEBD122C9FD3300CA3208 /* hook_lib */,
 				350E4C1222C311050039F2B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				350E4C1122C311050039F2B8 /* libmachooklib.dylib */,
+				35FFEBD022C9FD3300CA3208 /* libhook_lib.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				350E4C1D22C3112C0039F2B8 /* substitute */,
-				350E4C1622C311050039F2B8 /* machooklib.m */,
+				35FFEBE022CCC3D300CA3208 /* machook.m */,
 			);
 			path = machooklib;
 			sourceTree = "<group>";
@@ -65,6 +79,15 @@
 			path = substitute;
 			sourceTree = "<group>";
 		};
+		35FFEBD122C9FD3300CA3208 /* hook_lib */ = {
+			isa = PBXGroup;
+			children = (
+				35FFEBDC22CA015A00CA3208 /* xctheos.h */,
+				35FFEBDA22C9FE9C00CA3208 /* machook.xmi */,
+			);
+			path = hook_lib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -73,6 +96,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				350E4C2122C3112C0039F2B8 /* substrate.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35FFEBCC22C9FD3300CA3208 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35FFEBDD22CA015A00CA3208 /* xctheos.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +117,7 @@
 				350E4C0D22C311050039F2B8 /* Headers */,
 				350E4C0E22C311050039F2B8 /* Sources */,
 				350E4C0F22C311050039F2B8 /* Frameworks */,
+				35FFEBE222CCC43C00CA3208 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -94,6 +126,23 @@
 			name = machooklib;
 			productName = machooklib;
 			productReference = 350E4C1122C311050039F2B8 /* libmachooklib.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		35FFEBCF22C9FD3300CA3208 /* hook_lib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35FFEBD622C9FD3300CA3208 /* Build configuration list for PBXNativeTarget "hook_lib" */;
+			buildPhases = (
+				35FFEBCC22C9FD3300CA3208 /* Headers */,
+				35FFEBCD22C9FD3300CA3208 /* Sources */,
+				35FFEBCE22C9FD3300CA3208 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hook_lib;
+			productName = hook_lib;
+			productReference = 35FFEBD022C9FD3300CA3208 /* libhook_lib.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -106,6 +155,9 @@
 				ORGANIZATIONNAME = wz;
 				TargetAttributes = {
 					350E4C1022C311050039F2B8 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					35FFEBCF22C9FD3300CA3208 = {
 						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
@@ -123,16 +175,45 @@
 			projectRoot = "";
 			targets = (
 				350E4C1022C311050039F2B8 /* machooklib */,
+				35FFEBCF22C9FD3300CA3208 /* hook_lib */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35FFEBE222CCC43C00CA3208 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nsh doCompilerLogos.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		350E4C0E22C311050039F2B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				350E4C1722C311050039F2B8 /* machooklib.m in Sources */,
+				35FFEBE122CCC3D300CA3208 /* machook.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35FFEBCD22C9FD3300CA3208 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35FFEBDB22C9FEA400CA3208 /* machook.xmi in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +371,34 @@
 			};
 			name = Release;
 		};
+		35FFEBD722C9FD3300CA3208 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65RJX5V69R;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = "XcodeTheos=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		35FFEBD822C9FD3300CA3208 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65RJX5V69R;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_PREPROCESSOR_DEFINITIONS = "XcodeTheos=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -307,6 +416,15 @@
 			buildConfigurations = (
 				350E4C1B22C311050039F2B8 /* Debug */,
 				350E4C1C22C311050039F2B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35FFEBD622C9FD3300CA3208 /* Build configuration list for PBXNativeTarget "hook_lib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35FFEBD722C9FD3300CA3208 /* Debug */,
+				35FFEBD822C9FD3300CA3208 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

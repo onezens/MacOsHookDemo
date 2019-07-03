@@ -1,0 +1,135 @@
+# 1 "hook_lib/machook.xi"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 384 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "hook_lib/machook.xi" 2
+
+#pragma clang module import Cocoa /* clang -E: implicit import for #import <Cocoa/Cocoa.h> */
+# 1 "hook_lib/xctheos.h" 1
+# 4 "hook_lib/machook.xi" 2
+# 1 "machooklib/substitute/substrate.h" 1
+# 41 "machooklib/substitute/substrate.h"
+extern "C" {
+
+#pragma clang module import MachO.nlist /* clang -E: implicit import for #include <mach-o/nlist.h> */
+
+}
+
+
+#pragma clang module import ObjectiveC.runtime /* clang -E: implicit import for #include <objc/runtime.h> */
+#pragma clang module import ObjectiveC.message /* clang -E: implicit import for #include <objc/message.h> */
+
+
+#pragma clang module import Darwin.POSIX.dlfcn /* clang -E: implicit import for #include <dlfcn.h> */
+# 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/stdlib.h" 1 3
+# 54 "machooklib/substitute/substrate.h" 2
+# 70 "machooklib/substitute/substrate.h"
+extern "C" {
+
+
+typedef const void *MSImageRef;
+
+MSImageRef MSGetImageByName(const char *file)
+__asm__("SubGetImageByName");
+void *MSFindSymbol(MSImageRef image, const char *name)
+__asm__("SubFindSymbol");
+
+void MSHookFunction(void *symbol, void *replace, void **result)
+__asm__("SubHookFunction");
+
+
+void MSHookMessageEx(Class _class, SEL sel, IMP imp, IMP *result)
+__asm__("SubHookMessageEx");
+
+
+
+}
+
+
+
+
+
+
+namespace etl {
+
+template <unsigned Case_>
+struct Case {
+    static char value[Case_ + 1];
+};
+
+typedef Case<true> Yes;
+typedef Case<false> No;
+
+namespace be {
+    template <typename Checked_>
+    static Yes CheckClass_(void (Checked_::*)());
+
+    template <typename Checked_>
+    static No CheckClass_(...);
+}
+
+template <typename Type_>
+struct IsClass {
+    void gcc32();
+
+    static const bool value = (sizeof(be::CheckClass_<Type_>(0).value) == sizeof(Yes::value));
+};
+
+}
+# 131 "machooklib/substitute/substrate.h"
+template <typename Type_>
+static inline void MSHookMessage(Class _class, SEL sel, Type_ *imp, Type_ **result) {
+    return MSHookMessageEx(_class, sel, reinterpret_cast<IMP>(imp), reinterpret_cast<IMP *>(result));
+}
+
+template <typename Type_>
+static inline Type_ &MSHookIvar(id self, const char *name) {
+    Ivar ivar(class_getInstanceVariable(object_getClass(self), name));
+    void *pointer(ivar == __null ? __null : reinterpret_cast<char *>(self) + ivar_getOffset(ivar));
+    return *reinterpret_cast<Type_ *>(pointer);
+}
+# 258 "machooklib/substitute/substrate.h"
+template <typename Type_>
+static inline void MSHookFunction(Type_ *symbol, Type_ *replace, Type_ **result) {
+    return MSHookFunction(
+        reinterpret_cast<void *>(symbol),
+        reinterpret_cast<void *>(replace),
+        reinterpret_cast<void **>(result)
+    );
+}
+
+template <typename Type_>
+static inline void MSHookFunction(Type_ *symbol, Type_ *replace) {
+    return MSHookFunction(symbol, replace, reinterpret_cast<Type_ **>(__null));
+}
+
+template <typename Type_>
+static inline void MSHookSymbol(Type_ *&value, const char *name, MSImageRef image = __null) {
+    value = reinterpret_cast<Type_ *>(MSFindSymbol(image, name));
+}
+
+template <typename Type_>
+static inline void MSHookFunction(const char *name, Type_ *replace, Type_ **result = __null) {
+    Type_ *symbol;
+    MSHookSymbol(symbol, name);
+    return MSHookFunction(symbol, replace, result);
+}
+# 5 "hook_lib/machook.xi" 2
+
+@interface ViewController:NSObject
+@property (weak) NSTextField *statusLbl;
+@property (nonatomic, assign) BOOL isPayed;
+- (void)viewDidLoad;
+@end
+
+
+%hook ViewController
+
+- (void)viewDidLoad {
+    self.isPayed = true;
+    %orig();
+}
+
+%end
