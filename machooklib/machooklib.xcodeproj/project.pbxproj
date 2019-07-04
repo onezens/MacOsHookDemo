@@ -115,9 +115,9 @@
 			buildConfigurationList = 350E4C1A22C311050039F2B8 /* Build configuration list for PBXNativeTarget "machooklib" */;
 			buildPhases = (
 				350E4C0D22C311050039F2B8 /* Headers */,
+				35FFEBE222CCC43C00CA3208 /* ShellScript */,
 				350E4C0E22C311050039F2B8 /* Sources */,
 				350E4C0F22C311050039F2B8 /* Frameworks */,
-				35FFEBE222CCC43C00CA3208 /* ShellScript */,
 			);
 			buildRules = (
 			);
